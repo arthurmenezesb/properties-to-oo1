@@ -4,59 +4,92 @@ Properties to Object-oriented 1
 
 ## Grammar
 ```
-Programa ::= Expressao
+Programa ::= "{" DecClasse ";" Comando "}"
 
-Expressao ::= Valor
+Comando ::= Atribuicao
 
-| ExpUnaria
-| ExpBinaria
-| ExpDeclaracao
-| Id
-| Aplicacao
+| ComDeclaracao
+
+| While
+
 | IfThenElse
 
- 
+| IO
 
-Valor ::= ValorConcreto | ValorAbstrato
+| Comando ";" Comando
 
-ValorAbstrato ::= ValorFuncao
+| Skip
 
-ValorConcreto ::= ValorInteiro | ValorBooleano | ValorString
+| New
 
-ValorFuncao ::= "fn" ListId "." Expressao
+| ChamadaMetodo
+
+Skip ::=
+
+ComDeclaracao :: = "{" DecVariavel ";" Comando"}"
+
+While ::= "while" Expressao do" "{" Comando"}"
+
+IfThenElse ::= "if" Expressao "then" "{" Comando"}"
+
+| "if" Expressao "then" "{" Comando"}" "else" "{" Comando"}"
+
+
+ChamadaMetodo ::= Expressao "." Id "(" ListaExpressao ")" | Expressao "." Id "("")" 
+
+ListaExpressao ::= Expressao | Expressao "," ListaExpressao
+
+New ::= LeftExpression ":=" "new" Id
+
+Atribuicao ::= LeftExpression ":=" Expressao
+
+IO ::= "write" "(" Expressao ")" | "read" "(" Id ")"
+
+Expressao ::= Valor | ExpUnaria | ExpBinaria | LeftExpression | this
+
+Valor ::= ValorConcreto
+
+ValorConcreto ::= ValorInteiro | ValorBooleano | ValorString | ValorNull
 
 ExpUnaria ::= "-" Expressao | "not" Expressao | "length" Expressao
 
-ExpBinaria ::=     Expressao "+" Expressao
+ExpBinaria ::= Expressao "+" Expressao
 
 | Expressao "-" Expressao
+
 | Expressao "and" Expressao
+
 | Expressao "or" Expressao
+
 | Expressao "==" Expressao
+
 | Expressao "++" Expressao
 
- 
+LeftExpression ::= Id | AcessoAtributo
 
-ExpDeclaracao ::= "let" DeclaracaoFuncional "in" Expressao
+AcessoAtributo ::= LeftExpression.Id | this.Id
 
-DeclaracaoFuncional ::= DecVariavel
+DecClasse ::= "classe" Id "{" DecVariavel ";" DecProcedimento "}"
 
-| DecFuncao
-| DecComposta
+| DecClasse "," DecClasse
 
- 
+DecVariavel ::= Tipo Id "=" Expressao
 
-DecVariavel ::= "var" Id "=" Expressao
+| DecVariavel "," DecVariavel
 
-DecFuncao ::= "fun" ListId "=" Expressao
+| Tipo Id ":=" "new" Id
 
-DecComposta ::= DeclaracaoFuncional "," DeclaracaoFuncional
+DecProcedimento ::= "proc" Id "(" ListaDeclaracaoParametro ")" "{" Comando "}"
 
-ListId ::= Id  |  Id ListId
+| DecProcedimento "," DecProcedimento
 
-Aplicacao:= Expressao"(" ListExp ")"
+ListaDeclaracaoParametro ::= Tipo Id | Tipo Id "," ListaDeclaracaoParametro
 
-ListExp ::= Expressao  |  Expressao, ListExp
+Tipo ::= TipoClasse | TipoPrimitivo
+
+TipoClasse ::= Id
+
+TipoPrimitivo ::= "string" | "int" | "boolean"
 
 
 ```
