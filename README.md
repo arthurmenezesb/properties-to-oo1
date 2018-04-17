@@ -73,7 +73,7 @@ DecClasse ::= "classe" Id "{" DecVariavel ";" DecProcedimento "}"
 
 | DecClasse "," DecClasse
 
-DecVariavel ::= Tipo Id "=" Expressao "{ get {" Expressao "} set {" Expressao "} }"
+DecVariavel ::= Tipo Id "=" Expressao "{" "get" "{" Expressao "}" "set" "{" Expressao "}" "}"
 
 | DecVariavel "," DecVariavel
 
