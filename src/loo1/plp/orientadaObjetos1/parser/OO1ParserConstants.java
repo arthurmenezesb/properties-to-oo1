@@ -57,91 +57,95 @@ public interface OO1ParserConstants {
   /** RegularExpression Id. */
   int PROC = 28;
   /** RegularExpression Id. */
-  int INT = 29;
+  int GET = 29;
   /** RegularExpression Id. */
-  int BOOLEAN = 30;
+  int SET = 30;
   /** RegularExpression Id. */
-  int STRING = 31;
+  int INT = 31;
   /** RegularExpression Id. */
-  int INTEGER_LITERAL = 32;
+  int BOOLEAN = 32;
   /** RegularExpression Id. */
-  int DECIMAL_LITERAL = 33;
+  int STRING = 33;
   /** RegularExpression Id. */
-  int HEX_LITERAL = 34;
+  int INTEGER_LITERAL = 34;
   /** RegularExpression Id. */
-  int OCTAL_LITERAL = 35;
+  int DECIMAL_LITERAL = 35;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 36;
+  int HEX_LITERAL = 36;
   /** RegularExpression Id. */
-  int IDENTIFIER = 37;
+  int OCTAL_LITERAL = 37;
   /** RegularExpression Id. */
-  int LETTER = 38;
+  int STRING_LITERAL = 38;
   /** RegularExpression Id. */
-  int DIGIT = 39;
+  int IDENTIFIER = 39;
   /** RegularExpression Id. */
-  int LPAREN = 40;
+  int LETTER = 40;
   /** RegularExpression Id. */
-  int RPAREN = 41;
+  int DIGIT = 41;
   /** RegularExpression Id. */
-  int LBRACE = 42;
+  int LPAREN = 42;
   /** RegularExpression Id. */
-  int RBRACE = 43;
+  int RPAREN = 43;
   /** RegularExpression Id. */
-  int LBRACKET = 44;
+  int LBRACE = 44;
   /** RegularExpression Id. */
-  int RBRACKET = 45;
+  int RBRACE = 45;
   /** RegularExpression Id. */
-  int SEMICOLON = 46;
+  int LBRACKET = 46;
   /** RegularExpression Id. */
-  int COMMA = 47;
+  int RBRACKET = 47;
   /** RegularExpression Id. */
-  int DOT = 48;
+  int SEMICOLON = 48;
   /** RegularExpression Id. */
-  int ATTRIB = 49;
+  int COMMA = 49;
   /** RegularExpression Id. */
-  int ASSIGN = 50;
+  int DOT = 50;
   /** RegularExpression Id. */
-  int GT = 51;
+  int ATTRIB = 51;
   /** RegularExpression Id. */
-  int LT = 52;
+  int ASSIGN = 52;
   /** RegularExpression Id. */
-  int BANG = 53;
+  int GT = 53;
   /** RegularExpression Id. */
-  int TILDE = 54;
+  int LT = 54;
   /** RegularExpression Id. */
-  int HOOK = 55;
+  int BANG = 55;
   /** RegularExpression Id. */
-  int COLON = 56;
+  int TILDE = 56;
   /** RegularExpression Id. */
-  int EQ = 57;
+  int HOOK = 57;
   /** RegularExpression Id. */
-  int LE = 58;
+  int COLON = 58;
   /** RegularExpression Id. */
-  int GE = 59;
+  int EQ = 59;
   /** RegularExpression Id. */
-  int NE = 60;
+  int LE = 60;
   /** RegularExpression Id. */
-  int SC_OR = 61;
+  int GE = 61;
   /** RegularExpression Id. */
-  int SC_AND = 62;
+  int NE = 62;
   /** RegularExpression Id. */
-  int CONCAT = 63;
+  int SC_OR = 63;
   /** RegularExpression Id. */
-  int PLUS = 64;
+  int SC_AND = 64;
   /** RegularExpression Id. */
-  int MINUS = 65;
+  int CONCAT = 65;
   /** RegularExpression Id. */
-  int STAR = 66;
+  int PLUS = 66;
   /** RegularExpression Id. */
-  int SLASH = 67;
+  int MINUS = 67;
   /** RegularExpression Id. */
-  int BIT_AND = 68;
+  int STAR = 68;
   /** RegularExpression Id. */
-  int BIT_OR = 69;
+  int SLASH = 69;
   /** RegularExpression Id. */
-  int XOR = 70;
+  int BIT_AND = 70;
   /** RegularExpression Id. */
-  int REM = 71;
+  int BIT_OR = 71;
+  /** RegularExpression Id. */
+  int XOR = 72;
+  /** RegularExpression Id. */
+  int REM = 73;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -177,6 +181,8 @@ public interface OO1ParserConstants {
     "\"classe\"",
     "\"null\"",
     "\"proc\"",
+    "\"get\"",
+    "\"set\"",
     "\"int\"",
     "\"boolean\"",
     "\"string\"",
