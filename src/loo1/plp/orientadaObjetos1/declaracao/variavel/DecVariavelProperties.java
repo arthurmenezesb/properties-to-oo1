@@ -11,6 +11,7 @@ import loo1.plp.orientadaObjetos1.expressao.leftExpression.Id;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteCompilacaoOO1;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteExecucaoOO1;
 import loo1.plp.orientadaObjetos1.util.Tipo;
+import loo1.plp.orientadaObjetos1.util.TipoClasse;
 
 public class DecVariavelProperties implements DecVariavel {
 
@@ -43,14 +44,29 @@ public class DecVariavelProperties implements DecVariavel {
 			throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException, ClasseJaDeclaradaException,
 			ClasseNaoDeclaradaException, ObjetoNaoDeclaradoException, ObjetoJaDeclaradoException {
 		// TODO Auto-generated method stub
-		return null;
+		
+		ambiente.map(id , expressao.avaliar(ambiente));
+        return ambiente;
 	}
 
 	@Override
 	public boolean checaTipo(AmbienteCompilacaoOO1 ambiente) throws VariavelNaoDeclaradaException,
 			VariavelJaDeclaradaException, ClasseJaDeclaradaException, ClasseNaoDeclaradaException {
 		// TODO Auto-generated method stub
-		return false;
+		boolean resposta = false;
+        if ( expressao.checaTipo(ambiente) ) {
+            if( tipo instanceof TipoClasse) {
+                resposta = expressao.getTipo(ambiente).equals(TipoClasse.TIPO_NULL) ||
+                           expressao.getTipo(ambiente).equals(tipo);
+            }
+            else {
+                resposta = expressao.getTipo(ambiente).equals(tipo);
+            }
+        }
+        if(resposta) {
+            ambiente.map(id, tipo);
+        }
+        return resposta;
 	}
 
 }
