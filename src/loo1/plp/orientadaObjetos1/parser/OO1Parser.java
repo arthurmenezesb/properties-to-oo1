@@ -1044,9 +1044,9 @@ public class OO1Parser implements OO1ParserConstants {
       retorno = PDecVariavel();
       jj_consume_token(RPAREN);
     } else if (jj_2_39(2147483647)) {
-      retorno = PSimplesDecVariavel();
-    } else if (jj_2_40(2147483647)) {
       retorno = PDecVariavelProperties();
+    } else if (jj_2_40(2147483647)) {
+      retorno = PSimplesDecVariavel();
     } else {
       jj_consume_token(-1);
       throw new ParseException();
@@ -1658,16 +1658,6 @@ public class OO1Parser implements OO1ParserConstants {
     if (jj_3R_6()) return true;
     if (jj_scan_token(ASSIGN)) return true;
     if (jj_3R_8()) return true;
-    if (jj_scan_token(LBRACE)) return true;
-    if (jj_scan_token(GET)) return true;
-    if (jj_scan_token(LBRACE)) return true;
-    if (jj_3R_8()) return true;
-    if (jj_scan_token(RBRACE)) return true;
-    if (jj_scan_token(SET)) return true;
-    if (jj_scan_token(LBRACE)) return true;
-    if (jj_3R_8()) return true;
-    if (jj_scan_token(RBRACE)) return true;
-    if (jj_scan_token(RBRACE)) return true;
     return false;
   }
 
@@ -1683,6 +1673,16 @@ public class OO1Parser implements OO1ParserConstants {
     if (jj_3R_6()) return true;
     if (jj_scan_token(ASSIGN)) return true;
     if (jj_3R_8()) return true;
+    if (jj_scan_token(LBRACE)) return true;
+    if (jj_scan_token(GET)) return true;
+    if (jj_scan_token(LBRACE)) return true;
+    if (jj_3R_8()) return true;
+    if (jj_scan_token(RBRACE)) return true;
+    if (jj_scan_token(SET)) return true;
+    if (jj_scan_token(LBRACE)) return true;
+    if (jj_3R_8()) return true;
+    if (jj_scan_token(RBRACE)) return true;
+    if (jj_scan_token(RBRACE)) return true;
     return false;
   }
 
@@ -2823,7 +2823,7 @@ public class OO1Parser implements OO1ParserConstants {
     return false;
   }
 
-  private boolean jj_3R_75() {
+  private boolean jj_3R_74() {
     if (jj_3R_17()) return true;
     if (jj_3R_6()) return true;
     if (jj_scan_token(ASSIGN)) return true;
@@ -2867,7 +2867,7 @@ public class OO1Parser implements OO1ParserConstants {
     return false;
   }
 
-  private boolean jj_3R_74() {
+  private boolean jj_3R_75() {
     if (jj_3R_17()) return true;
     if (jj_3R_6()) return true;
     if (jj_scan_token(ASSIGN)) return true;

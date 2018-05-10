@@ -8,6 +8,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteCompilacaoOO1;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteExecucaoOO1;
 /**
@@ -20,12 +21,13 @@ public interface Declaracao {
      * @param ambiente o ambiente que contem o mapeamento entre identificadores
      *  e valores.
      * @return o ambiente modificado pela inicializa��o da vari�vel.
+     * @throws PropriedadeJaDeclaradaException 
      */
     public AmbienteExecucaoOO1 elabora(AmbienteExecucaoOO1 ambiente)
         throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
                ProcedimentoJaDeclaradoException, ProcedimentoNaoDeclaradoException,
                ClasseJaDeclaradaException,ClasseNaoDeclaradaException,
-               ObjetoNaoDeclaradoException, ObjetoJaDeclaradoException;
+               ObjetoNaoDeclaradoException, ObjetoJaDeclaradoException, PropriedadeJaDeclaradaException;
 
     /**
      * Verifica se a declara��o est� bem tipada, ou seja, se a

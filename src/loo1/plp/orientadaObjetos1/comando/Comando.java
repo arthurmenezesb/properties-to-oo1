@@ -14,6 +14,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteCompilacaoOO1;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteExecucaoOO1;
@@ -28,12 +29,13 @@ public interface Comando {
      * @param ambiente o ambiente que contem o mapeamento entre identificadores
      *  e valores.
      * @return o ambiente modificado pela execu��o do comando.
+     * @throws PropriedadeJaDeclaradaException 
      */
     public AmbienteExecucaoOO1 executar(AmbienteExecucaoOO1 ambiente)
         throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
                ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException,
                ProcedimentoNaoDeclaradoException,ProcedimentoJaDeclaradoException,
-               ClasseJaDeclaradaException, ClasseNaoDeclaradaException, EntradaInvalidaException;
+               ClasseJaDeclaradaException, ClasseNaoDeclaradaException, EntradaInvalidaException, PropriedadeJaDeclaradaException;
     /**
      * Realiza a verificacao de tipos deste comando.
      *

@@ -8,6 +8,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteCompilacaoOO1;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteExecucaoOO1;
@@ -45,7 +46,7 @@ public class Sequencial implements Comando{
         throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
                ProcedimentoNaoDeclaradoException, ProcedimentoJaDeclaradoException,
                ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException,
-               ClasseJaDeclaradaException, ClasseNaoDeclaradaException, EntradaInvalidaException {
+               ClasseJaDeclaradaException, ClasseNaoDeclaradaException, EntradaInvalidaException, PropriedadeJaDeclaradaException {
 
         ambiente = comando1.executar(ambiente);
         ambiente = comando2.executar(ambiente);

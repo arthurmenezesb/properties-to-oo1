@@ -12,6 +12,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.expressao.leftExpression.Id;
 import loo1.plp.orientadaObjetos1.expressao.leftExpression.LeftExpression;
 import loo1.plp.orientadaObjetos1.expressao.valor.ValorRef;
@@ -49,11 +50,12 @@ public class New implements Comando{
 	 * @param ambiente O ambiente contendo o mapeamento entre identificadores
 	 * e valores.
 	 * @return o ambiente de execu��o atualizado.
+	 * @throws PropriedadeJaDeclaradaException 
 	 */
     public AmbienteExecucaoOO1 executar(AmbienteExecucaoOO1 ambiente)    
     		throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
           ClasseJaDeclaradaException, ClasseNaoDeclaradaException,
-          ObjetoJaDeclaradoException,ObjetoNaoDeclaradoException{
+          ObjetoJaDeclaradoException,ObjetoNaoDeclaradoException, PropriedadeJaDeclaradaException{
 
           DefClasse defClasse = ambiente.getDefClasse(classe);
           DecVariavel decVariavel = defClasse.getDecVariavel();

@@ -8,6 +8,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.ListaExpressao;
@@ -60,7 +61,7 @@ public class ChamadaMetodo implements Comando {
         throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
         ProcedimentoNaoDeclaradoException, ProcedimentoJaDeclaradoException,
         ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException,
-        ClasseNaoDeclaradaException, ClasseJaDeclaradaException, EntradaInvalidaException{
+        ClasseNaoDeclaradaException, ClasseJaDeclaradaException, EntradaInvalidaException, PropriedadeJaDeclaradaException{
 
         ValorRef vr = (ValorRef) expressao.avaliar(ambiente);  // recupera o id do objeto
         Objeto objeto =  ambiente.getObjeto(vr);               // recupera o objeto

@@ -6,6 +6,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.leftExpression.Id;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteCompilacaoOO1;
@@ -42,11 +43,34 @@ public class DecVariavelProperties implements DecVariavel {
 	@Override
 	public AmbienteExecucaoOO1 elabora(AmbienteExecucaoOO1 ambiente)
 			throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException, ClasseJaDeclaradaException,
-			ClasseNaoDeclaradaException, ObjetoNaoDeclaradoException, ObjetoJaDeclaradoException {
+			ClasseNaoDeclaradaException, ObjetoNaoDeclaradoException, ObjetoJaDeclaradoException, PropriedadeJaDeclaradaException {
 		// TODO Auto-generated method stub
 		
 		ambiente.map(id , expressao.avaliar(ambiente));
-        return ambiente;
+		ambiente.mapeiaPropriedade(id, expget);
+		
+		/*
+		boolean isGetAndSetPresent = expget != null && expset != null;
+		boolean isntGetAndSetPresent = expget == null && expset == null;
+		
+		if(isGetAndSetPresent) {
+			ambiente.map(id, expressao.avaliar(ambiente));
+			ambiente.changeValor(id, expset.avaliar(ambiente));
+			ambiente.changeValor(id, expget.avaliar(ambiente));
+		} else if (isntGetAndSetPresent) {
+			ambiente.map(id, expressao.avaliar(ambiente));
+		} else if (expset == null) {
+			ambiente.map(id, expressao.avaliar(ambiente));
+			ambiente.changeValor(id, expget.avaliar(ambiente));
+		} else if (expget == null ) {
+			ambiente.map(id, expressao.avaliar(ambiente));
+			ambiente.changeValor(id, expset.avaliar(ambiente));
+		} else {
+			throw new VariavelNaoDeclaradaException(id);
+		}
+		*/
+		
+		return ambiente;
 	}
 
 	@Override

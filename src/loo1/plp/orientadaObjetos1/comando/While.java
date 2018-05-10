@@ -8,6 +8,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.valor.ValorBooleano;
@@ -47,7 +48,7 @@ public class While implements Comando{
         throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
                ProcedimentoNaoDeclaradoException, ProcedimentoJaDeclaradoException,
                 ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException,
-                ClasseJaDeclaradaException, ClasseNaoDeclaradaException, EntradaInvalidaException{
+                ClasseJaDeclaradaException, ClasseNaoDeclaradaException, EntradaInvalidaException, PropriedadeJaDeclaradaException{
         while ( ((ValorBooleano)expressao.avaliar(ambiente)).valor() ) {
             ambiente = comando.executar(ambiente);
         }

@@ -7,6 +7,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.expressao.leftExpression.Id;
 import loo1.plp.orientadaObjetos1.expressao.valor.ValorNull;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteCompilacaoOO1;
@@ -74,7 +75,7 @@ public class DecVariavelObjeto implements DecVariavel {
 	public AmbienteExecucaoOO1 elabora(AmbienteExecucaoOO1 ambiente)
 			throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
 			ClasseJaDeclaradaException, ClasseNaoDeclaradaException,
-			ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException {
+			ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException, PropriedadeJaDeclaradaException {
 		AmbienteExecucaoOO1 aux = new SimplesDecVariavel(tipo, objeto,
 				new ValorNull()).elabora(ambiente);
 		aux = new New(objeto, classe).executar(aux);

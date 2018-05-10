@@ -25,6 +25,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaNaoFornecidaException;
 import loo1.plp.orientadaObjetos1.expressao.Expressao;
@@ -169,6 +170,9 @@ public class Teste2OO1 {
   }
   catch (EntradaInvalidaException e){
       System.out.println(e.toString());
+  }
+  catch (PropriedadeJaDeclaradaException e) {
+	  System.out.println(e.toString());
   }
  }
 

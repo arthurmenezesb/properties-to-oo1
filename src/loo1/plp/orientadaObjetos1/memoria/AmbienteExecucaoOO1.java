@@ -7,7 +7,9 @@ import loo1.plp.expressions2.expression.Id;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
+import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.valor.Valor;
 import loo1.plp.orientadaObjetos1.expressao.valor.ValorRef;
 import loo1.plp.orientadaObjetos1.memoria.colecao.ListaValor;
@@ -23,6 +25,12 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
      * @return a pilha de valores associados a identificadores.
      */
 	public Stack<HashMap<Id, Valor>> getPilha();
+	
+	/**
+	 * Retorna a pilha com as definicoes das propriedades
+	 * @return
+	 */
+	public HashMap<Id, Expressao> getMapPropriedades();
 
     /**
      * Retorna a pilha com as defini�oes das classes.
@@ -35,6 +43,8 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
      * @return o mapeamento com os objetos e seus valores.
      */
     public HashMap<ValorRef, Objeto> getMapObjetos();
+    
+    public void mapeiaPropriedade(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
 
     /**
      * Mapeia um valor refer�ncia a um objeto.

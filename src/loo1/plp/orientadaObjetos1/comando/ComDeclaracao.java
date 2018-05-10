@@ -9,6 +9,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteCompilacaoOO1;
 import loo1.plp.orientadaObjetos1.memoria.AmbienteExecucaoOO1;
@@ -38,13 +39,14 @@ public class ComDeclaracao implements Comando {
      * @param ambiente o ambiente que contem o mapeamento entre identificadores
      *  e valores.
      * @return o ambiente modificado pela execu��o da declara��o e do comando.
+     * @throws PropriedadeJaDeclaradaException 
      *
      */
     public AmbienteExecucaoOO1 executar(AmbienteExecucaoOO1 ambiente)
         throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
                ProcedimentoNaoDeclaradoException, ProcedimentoJaDeclaradoException,
                ClasseNaoDeclaradaException, ClasseJaDeclaradaException,
-               ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException, EntradaInvalidaException{
+               ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException, EntradaInvalidaException, PropriedadeJaDeclaradaException{
         ambiente.incrementa();
         ambiente = comando.executar(declaracao.elabora(ambiente));
         ambiente.restaura();

@@ -8,6 +8,7 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.valor.ValorBooleano;
@@ -53,7 +54,7 @@ public class IfThenElse implements Comando {
         throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
                ProcedimentoNaoDeclaradoException, ProcedimentoJaDeclaradoException,
                ClasseJaDeclaradaException, ClasseNaoDeclaradaException,
-               ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException, EntradaInvalidaException {
+               ObjetoJaDeclaradoException, ObjetoNaoDeclaradoException, EntradaInvalidaException, PropriedadeJaDeclaradaException {
         if ( ((ValorBooleano)expressao.avaliar(ambiente)).valor() )
             return comandoThen.executar(ambiente);
         else return comandoElse.executar(ambiente);

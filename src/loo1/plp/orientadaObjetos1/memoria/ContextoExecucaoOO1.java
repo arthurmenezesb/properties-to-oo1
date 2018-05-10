@@ -13,7 +13,10 @@ import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
+import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.valor.Valor;
 import loo1.plp.orientadaObjetos1.expressao.valor.ValorBooleano;
 import loo1.plp.orientadaObjetos1.expressao.valor.ValorInteiro;
@@ -41,6 +44,11 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 	 */
 
     private HashMap<ValorRef, Objeto> mapObjetos;
+    
+    /**
+     * Mapeoamento de propriedades
+     */
+    private HashMap<Id, Expressao> mapPropriedades;
 
     /**
 	 * A pilha de blocos de contexto.
@@ -67,6 +75,8 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 
         mapDefClasse = new HashMap<Id, DefClasse>();    // criacao do mapeamento de classes
         
+        mapPropriedades = new HashMap<Id, Expressao>();
+        
         this.entrada = null;
         this.saida = new ListaValor();
     }
@@ -77,6 +87,7 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
     public ContextoExecucaoOO1(AmbienteExecucaoOO1 ambiente) throws VariavelJaDeclaradaException{
        proxRef = ambiente.getRef();
        this.mapObjetos = ambiente.getMapObjetos();
+       this.mapPropriedades = ambiente.getMapPropriedades();
        this.mapDefClasse = ambiente.getMapDefClasse();
        this.entrada = ambiente.getEntrada();
        this.saida = ambiente.getSaida();
@@ -98,6 +109,8 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 
         mapObjetos = new HashMap<ValorRef, Objeto>();       
 
+        mapPropriedades = new HashMap<Id, Expressao>();
+        
         mapDefClasse = new HashMap<Id, DefClasse>();    // inicializacao do map
         
         this.entrada = entrada;
@@ -120,6 +133,14 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 	public void setSaida(ListaValor saida) {
 		this.saida = saida;
 	}    
+	
+	/**
+	 * Retorna a pilha com as definicoes das propriedades
+	 * @return
+	 */
+	public HashMap<Id, Expressao> getMapPropriedades(){
+		return this.mapPropriedades;
+	}
 
     /**
 	 * Retorna a pilha com as defini�oes das classes.
@@ -286,6 +307,22 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
         }
 
     }
+    
+    /**
+     * Mapeia um identificador a uma propriedade
+     * 
+     * @param idArg
+     * 			nome da variavel
+     * @param exp
+     * 			expressao da propriedade (nao foi avaliada ainda)
+     * @throws PropriedadeJaDeclaradaException
+     * 			quando a propriedade ja foi declarada
+     */
+    public void mapeiaPropriedade(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException {
+    		if (this.mapPropriedades.put(idArg, exp) != null) {
+    			throw new PropriedadeJaDeclaradaException(idArg);
+    		}
+    }
 
     /**
 	 * Mapeia um identificador a um defini��o de classe.
@@ -381,7 +418,21 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
             return result;
         }
     }
-
+    
+    /**
+     * Obtem a definicao da propriedade cujo nome da variavel eh idArg
+     * @param idArg
+     * 			nome da variavel
+     * @return 
+     * 			a definicao da propriedade ainda n avalidada
+     * @throws PropriedadeNaoDeclaradaException
+     * 			quando nao foi declarada nenhuma propriedade cuja variavel tem esse nome
+     */
+    public Expressao getPropriedade(Id idArg) throws PropriedadeNaoDeclaradaException{
+    		Expressao result = null;
+    		result = this.mapPropriedades.get(idArg);
+    		return result;
+    }
 
     /**
 	 * Obt�m a defini��o da classe cujo nome � idArg
