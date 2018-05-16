@@ -64,6 +64,16 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 	 * A refer�ncia do objeto a ser inserido na pilha de objetos
 	 */
     private ValorRef proxRef;
+    
+    private boolean IsGetProperties = true;
+    
+    public boolean getIsGetProperties() {
+    	return this.IsGetProperties;
+    }
+    
+    public void setIsGetProperties(boolean value) {
+    	this.IsGetProperties = value;
+    }
 
     /**
 	 * Construtor utilizado quando queremos ler do teclado.
@@ -79,6 +89,8 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
         
         this.entrada = null;
         this.saida = new ListaValor();
+        
+        
     }
 
     /**
@@ -115,6 +127,7 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
         
         this.entrada = entrada;
         this.saida = new ListaValor();
+        this.IsGetProperties = true;
     }
 
     /**

@@ -44,6 +44,10 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
      */
     public HashMap<ValorRef, Objeto> getMapObjetos();
     
+    public boolean getIsGetProperties();
+    
+    public void setIsGetProperties(boolean value);
+    
     public void mapeiaPropriedade(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
 
     /**
