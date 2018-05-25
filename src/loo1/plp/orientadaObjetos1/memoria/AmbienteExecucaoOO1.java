@@ -30,7 +30,7 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
 	 * Retorna a pilha com as definicoes das propriedades
 	 * @return
 	 */
-	public HashMap<Id, Expressao> getMapPropriedades();
+	public HashMap<Id, Expressao> getMapPropriedadeGet();
 
     /**
      * Retorna a pilha com as defini�oes das classes.
@@ -48,7 +48,7 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
     
     public void setIsGetProperties(boolean value);
     
-    public void mapeiaPropriedade(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
+    public void mapeiaPropriedadeGet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
 
     /**
      * Mapeia um valor refer�ncia a um objeto.

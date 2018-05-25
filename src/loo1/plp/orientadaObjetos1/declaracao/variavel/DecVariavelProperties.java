@@ -47,7 +47,7 @@ public class DecVariavelProperties implements DecVariavel {
 		// TODO Auto-generated method stub
 		
 		ambiente.map(id , expressao.avaliar(ambiente));
-		ambiente.mapeiaPropriedade(id, expget);
+		ambiente.mapeiaPropriedadeGet(id, expget);
 		
 		/*
 		boolean isGetAndSetPresent = expget != null && expset != null;

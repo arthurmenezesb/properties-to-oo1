@@ -114,7 +114,7 @@ public class AcessoAtributoThis extends AcessoAtributo {
        
        
        if(ambiente.getIsGetProperties()) {
-	       Expressao propriedade = ambiente.getMapPropriedades().get(super.getId());
+	       Expressao propriedade = ambiente.getMapPropriedadeGet().get(super.getId());
 	       
 	       if(propriedade != null) {
 	    	   ambiente.setIsGetProperties(false);
