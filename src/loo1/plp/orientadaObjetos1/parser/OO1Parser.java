@@ -1627,15 +1627,6 @@ public class OO1Parser implements OO1ParserConstants {
     finally { jj_save(45, xla); }
   }
 
-  private boolean jj_3R_73() {
-    if (jj_3R_17()) return true;
-    if (jj_3R_6()) return true;
-    if (jj_scan_token(ATTRIB)) return true;
-    if (jj_scan_token(NEW)) return true;
-    if (jj_3R_6()) return true;
-    return false;
-  }
-
   private boolean jj_3R_59() {
     if (jj_scan_token(COMAND_SKIP)) return true;
     return false;
@@ -2379,11 +2370,11 @@ public class OO1Parser implements OO1ParserConstants {
   private boolean jj_3_44() {
     Token xsp;
     xsp = jj_scanpos;
-    if (jj_scan_token(33)) {
+    if (jj_scan_token(34)) {
     jj_scanpos = xsp;
-    if (jj_scan_token(31)) {
+    if (jj_scan_token(32)) {
     jj_scanpos = xsp;
-    if (jj_scan_token(32)) return true;
+    if (jj_scan_token(33)) return true;
     }
     }
     return false;
@@ -2890,6 +2881,15 @@ public class OO1Parser implements OO1ParserConstants {
     return false;
   }
 
+  private boolean jj_3R_73() {
+    if (jj_3R_17()) return true;
+    if (jj_3R_6()) return true;
+    if (jj_scan_token(ATTRIB)) return true;
+    if (jj_scan_token(NEW)) return true;
+    if (jj_3R_6()) return true;
+    return false;
+  }
+
   /** Generated Token Manager. */
   public OO1ParserTokenManager token_source;
   JavaCharStream jj_input_stream;
@@ -2911,13 +2911,13 @@ public class OO1Parser implements OO1ParserConstants {
       jj_la1_init_2();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x23b0000,0x0,0x200000,0x2000000,0xa007800,0x80000,0x8006000,0x0,0x2000,0xa007800,0x0,0x400,0x400,0x200,0x0,0x2000000,0x0,0x4000000,0x80000000,0x10000000,0x10000000,0x80000000,0x0,0x0,};
+      jj_la1_0 = new int[] {0x23b0000,0x0,0x200000,0x2000000,0xa007800,0x80000,0x8006000,0x0,0x2000,0xa007800,0x0,0x400,0x400,0x200,0x0,0x2000000,0x0,0x4000000,0x0,0x10000000,0x10000000,0x0,0x0,0x0,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x1480,0x400,0x0,0x480,0x4c4,0x0,0x44,0x40,0x0,0x4c4,0x8000000,0x0,0x0,0x0,0x480,0x0,0x80,0x0,0x483,0x0,0x0,0x83,0x80,0x2,};
+      jj_la1_1 = new int[] {0x2900,0x800,0x0,0x900,0x988,0x0,0x88,0x80,0x0,0x988,0x10000000,0x0,0x0,0x0,0x900,0x0,0x100,0x0,0x907,0x0,0x0,0x107,0x100,0x4,};
    }
    private static void jj_la1_init_2() {
-      jj_la1_2 = new int[] {0x0,0x0,0x0,0x0,0x8,0x0,0x0,0x0,0x0,0x8,0x0,0xe,0xe,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
+      jj_la1_2 = new int[] {0x0,0x0,0x0,0x0,0x10,0x0,0x0,0x0,0x0,0x10,0x0,0x1c,0x1c,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
    }
   final private JJCalls[] jj_2_rtns = new JJCalls[46];
   private boolean jj_rescan = false;
@@ -3103,7 +3103,7 @@ public class OO1Parser implements OO1ParserConstants {
   /** Generate ParseException. */
   public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[74];
+    boolean[] la1tokens = new boolean[75];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -3123,7 +3123,7 @@ public class OO1Parser implements OO1ParserConstants {
         }
       }
     }
-    for (int i = 0; i < 74; i++) {
+    for (int i = 0; i < 75; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

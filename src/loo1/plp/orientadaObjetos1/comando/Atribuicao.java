@@ -58,6 +58,12 @@ public class Atribuicao implements Comando {
             ValorRef referencia = (ValorRef)expAV.avaliar(ambiente);
             Objeto obj = ambiente.getObjeto(referencia);
             obj.changeAtributo(idVariavel, expressao.avaliar(ambiente));
+            
+            Expressao propriedade = ambiente.getMapPropriedadeSet().get(idVariavel);
+            if(propriedade != null) {
+            		ambiente.setIsGetProperties(false); //precisa setar false para n pegar a variavel do get quando tiver no set
+            		obj.changeAtributo(idVariavel, propriedade.avaliar(ambiente));
+        		}
         }
         else
             ambiente.changeValor(idVariavel, expressao.avaliar(ambiente));

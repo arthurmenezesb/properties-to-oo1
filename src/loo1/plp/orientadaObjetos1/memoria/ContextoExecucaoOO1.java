@@ -46,9 +46,14 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
     private HashMap<ValorRef, Objeto> mapObjetos;
     
     /**
-     * Mapeoamento de propriedades
+     * Mapeoamento da propriedade Get
      */
     private HashMap<Id, Expressao> mapPropriedadeGet;
+    
+    /**
+     * Mapeoamento da propriedade Set
+     */
+    private HashMap<Id, Expressao> mapPropriedadeSet;
 
     /**
 	 * A pilha de blocos de contexto.
@@ -86,6 +91,8 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
         mapDefClasse = new HashMap<Id, DefClasse>();    // criacao do mapeamento de classes
         
         mapPropriedadeGet = new HashMap<Id, Expressao>();
+        mapPropriedadeSet = new HashMap<Id, Expressao>();
+        HashMap<Id, Expressao> mapPropreidadeSet = new HashMap<Id, Expressao>();
         
         this.entrada = null;
         this.saida = new ListaValor();
@@ -100,6 +107,7 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
        proxRef = ambiente.getRef();
        this.mapObjetos = ambiente.getMapObjetos();
        this.mapPropriedadeGet = ambiente.getMapPropriedadeGet();
+       this.mapPropriedadeSet = ambiente.getMapPropriedadeSet();
        this.mapDefClasse = ambiente.getMapDefClasse();
        this.entrada = ambiente.getEntrada();
        this.saida = ambiente.getSaida();
@@ -122,6 +130,7 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
         mapObjetos = new HashMap<ValorRef, Objeto>();       
 
         mapPropriedadeGet = new HashMap<Id, Expressao>();
+        mapPropriedadeSet = new HashMap<Id, Expressao>();
         
         mapDefClasse = new HashMap<Id, DefClasse>();    // inicializacao do map
         
@@ -153,6 +162,10 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 	 */
 	public HashMap<Id, Expressao> getMapPropriedadeGet(){
 		return this.mapPropriedadeGet;
+	}
+	
+	public HashMap<Id, Expressao> getMapPropriedadeSet(){
+		return this.mapPropriedadeSet;
 	}
 
     /**
@@ -336,6 +349,12 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
     			throw new PropriedadeJaDeclaradaException(idArg);
     		}
     }
+    
+    public void mapeiaPropriedadeSet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException {
+    		if (this.mapPropriedadeSet.put(idArg, exp) != null) {
+    			throw new PropriedadeJaDeclaradaException(idArg);
+    		}
+    }
 
     /**
 	 * Mapeia um identificador a um defini��o de classe.
@@ -444,6 +463,12 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
     public Expressao getPropriedadeGet(Id idArg) throws PropriedadeNaoDeclaradaException{
     		Expressao result = null;
     		result = this.mapPropriedadeGet.get(idArg);
+    		return result;
+    }
+    
+    public Expressao getPropriedadeSet(Id idArg) throws PropriedadeNaoDeclaradaException {
+    		Expressao result = null;
+    		result = this.mapPropriedadeSet.get(idArg);
     		return result;
     }
 

@@ -49,6 +49,10 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
     public void setIsGetProperties(boolean value);
     
     public void mapeiaPropriedadeGet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
+    
+    public void mapeiaPropriedadeSet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
+    
+    public HashMap<Id, Expressao> getMapPropriedadeSet();
 
     /**
      * Mapeia um valor refer�ncia a um objeto.
@@ -132,4 +136,6 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
      * declarada.
      */
     public Valor getValor(Id idArg) throws VariavelNaoDeclaradaException;
+
+	
 }

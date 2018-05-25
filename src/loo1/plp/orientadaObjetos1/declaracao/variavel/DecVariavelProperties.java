@@ -48,27 +48,7 @@ public class DecVariavelProperties implements DecVariavel {
 		
 		ambiente.map(id , expressao.avaliar(ambiente));
 		ambiente.mapeiaPropriedadeGet(id, expget);
-		
-		/*
-		boolean isGetAndSetPresent = expget != null && expset != null;
-		boolean isntGetAndSetPresent = expget == null && expset == null;
-		
-		if(isGetAndSetPresent) {
-			ambiente.map(id, expressao.avaliar(ambiente));
-			ambiente.changeValor(id, expset.avaliar(ambiente));
-			ambiente.changeValor(id, expget.avaliar(ambiente));
-		} else if (isntGetAndSetPresent) {
-			ambiente.map(id, expressao.avaliar(ambiente));
-		} else if (expset == null) {
-			ambiente.map(id, expressao.avaliar(ambiente));
-			ambiente.changeValor(id, expget.avaliar(ambiente));
-		} else if (expget == null ) {
-			ambiente.map(id, expressao.avaliar(ambiente));
-			ambiente.changeValor(id, expset.avaliar(ambiente));
-		} else {
-			throw new VariavelNaoDeclaradaException(id);
-		}
-		*/
+		ambiente.mapeiaPropriedadeSet(id, expset);
 		
 		return ambiente;
 	}
