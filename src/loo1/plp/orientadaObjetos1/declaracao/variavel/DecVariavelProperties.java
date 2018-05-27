@@ -2,6 +2,7 @@ package loo1.plp.orientadaObjetos1.declaracao.variavel;
 
 import loo1.plp.expressions2.memory.VariavelJaDeclaradaException;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.comando.ChamadaMetodo;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
@@ -21,13 +22,17 @@ public class DecVariavelProperties implements DecVariavel {
 	private Expressao expressao;
 	private Expressao expget;
 	private Expressao expset;
+	private ChamadaMetodo metodoGet;
+	private ChamadaMetodo metodoSet;
 	
-	public DecVariavelProperties(Tipo tipo, Id id, Expressao expressao, Expressao expget, Expressao expset) {
+	public DecVariavelProperties(Tipo tipo, Id id, Expressao expressao, Expressao expget, Expressao expset, ChamadaMetodo metodoGet, ChamadaMetodo metodoSet) {
 		this.tipo = tipo;
         this.id = id;
         this.expressao = expressao;
         this.expget = expget;
         this.expset = expset;
+        this.metodoGet = metodoGet;
+        this.metodoSet = metodoSet;
 	}
 	
 	@Override
