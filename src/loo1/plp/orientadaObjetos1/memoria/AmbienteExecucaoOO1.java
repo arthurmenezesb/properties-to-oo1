@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import loo1.plp.expressions2.expression.Id;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.declaracao.variavel.Propriedade;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
@@ -30,7 +31,7 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
 	 * Retorna a pilha com as definicoes das propriedades
 	 * @return
 	 */
-	public HashMap<Id, Expressao> getMapPropriedadeGet();
+	public HashMap<Id, Propriedade> getMapPropriedadeGet();
 
     /**
      * Retorna a pilha com as defini�oes das classes.
@@ -48,11 +49,11 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
     
     public void setIsGetProperties(boolean value);
     
-    public void mapeiaPropriedadeGet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
+    public void mapeiaPropriedadeGet(Id idArg, Propriedade propGet) throws PropriedadeJaDeclaradaException;
     
-    public void mapeiaPropriedadeSet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException;
+    public void mapeiaPropriedadeSet(Id idArg, Propriedade propSet) throws PropriedadeJaDeclaradaException;
     
-    public HashMap<Id, Expressao> getMapPropriedadeSet();
+    public HashMap<Id, Propriedade> getMapPropriedadeSet();
 
     /**
      * Mapeia um valor refer�ncia a um objeto.

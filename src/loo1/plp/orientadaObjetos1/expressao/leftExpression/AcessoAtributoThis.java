@@ -2,8 +2,15 @@ package loo1.plp.orientadaObjetos1.expressao.leftExpression;
 
 import loo1.plp.expressions2.memory.VariavelJaDeclaradaException;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.declaracao.variavel.Propriedade;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
+import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.This;
 import loo1.plp.orientadaObjetos1.expressao.valor.Valor;
@@ -114,19 +121,28 @@ public class AcessoAtributoThis extends AcessoAtributo {
        
        
        if(ambiente.getIsGetProperties()) {
-	       Expressao propriedade = ambiente.getMapPropriedadeGet().get(super.getId());
+	       Propriedade propriedade = ambiente.getMapPropriedadeGet().get(super.getId());
 	       
 	       if(propriedade != null) {
-	    	   ambiente.setIsGetProperties(false);
-	    	   return propriedade.avaliar(ambiente);
+	    	   	   ambiente.setIsGetProperties(false);
+	    	   	   try {
+					ambiente = propriedade.getChamadaMetodo().executar(ambiente);
+					//ambiente.setIsGetProperties(true);
+				} catch (ProcedimentoNaoDeclaradoException | ProcedimentoJaDeclaradoException
+						| ObjetoJaDeclaradoException | ClasseJaDeclaradaException | EntradaInvalidaException
+						| PropriedadeJaDeclaradaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	    	   	   return propriedade.getExpressao().avaliar(ambiente);
 	       } else {
-	    	   //Recuperando o valor do atributo "id" do objeto
-	    	   return aux.get(super.getId());
+		    	   //Recuperando o valor do atributo "id" do objeto
+		    	   return aux.get(super.getId());
 	       }
        } else {
            // Recuperando o valor do atributo "id" do objeto
-    	   ambiente.setIsGetProperties(true);
-    	   return aux.get(super.getId());
+    	   	   ambiente.setIsGetProperties(true);
+    	       return aux.get(super.getId());
        }
     }
 }

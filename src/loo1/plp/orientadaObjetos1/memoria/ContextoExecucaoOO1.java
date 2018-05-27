@@ -9,6 +9,7 @@ import java.util.Stack;
 import loo1.plp.expressions2.expression.Id;
 import loo1.plp.expressions2.memory.VariavelJaDeclaradaException;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.declaracao.variavel.Propriedade;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
@@ -48,12 +49,12 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
     /**
      * Mapeoamento da propriedade Get
      */
-    private HashMap<Id, Expressao> mapPropriedadeGet;
+    private HashMap<Id, Propriedade> mapPropriedadeGet;
     
     /**
      * Mapeoamento da propriedade Set
      */
-    private HashMap<Id, Expressao> mapPropriedadeSet;
+    private HashMap<Id, Propriedade> mapPropriedadeSet;
 
     /**
 	 * A pilha de blocos de contexto.
@@ -90,8 +91,8 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 
         mapDefClasse = new HashMap<Id, DefClasse>();    // criacao do mapeamento de classes
         
-        mapPropriedadeGet = new HashMap<Id, Expressao>();
-        mapPropriedadeSet = new HashMap<Id, Expressao>();
+        mapPropriedadeGet = new HashMap<Id, Propriedade>();
+        mapPropriedadeSet = new HashMap<Id, Propriedade>();
         HashMap<Id, Expressao> mapPropreidadeSet = new HashMap<Id, Expressao>();
         
         this.entrada = null;
@@ -129,8 +130,8 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 
         mapObjetos = new HashMap<ValorRef, Objeto>();       
 
-        mapPropriedadeGet = new HashMap<Id, Expressao>();
-        mapPropriedadeSet = new HashMap<Id, Expressao>();
+        mapPropriedadeGet = new HashMap<Id, Propriedade>();
+        mapPropriedadeSet = new HashMap<Id, Propriedade>();
         
         mapDefClasse = new HashMap<Id, DefClasse>();    // inicializacao do map
         
@@ -160,11 +161,11 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 	 * Retorna a pilha com as definicoes das propriedades
 	 * @return
 	 */
-	public HashMap<Id, Expressao> getMapPropriedadeGet(){
+	public HashMap<Id, Propriedade> getMapPropriedadeGet(){
 		return this.mapPropriedadeGet;
 	}
 	
-	public HashMap<Id, Expressao> getMapPropriedadeSet(){
+	public HashMap<Id, Propriedade> getMapPropriedadeSet(){
 		return this.mapPropriedadeSet;
 	}
 
@@ -344,14 +345,14 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
      * @throws PropriedadeJaDeclaradaException
      * 			quando a propriedade ja foi declarada
      */
-    public void mapeiaPropriedadeGet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException {
-    		if (this.mapPropriedadeGet.put(idArg, exp) != null) {
+    public void mapeiaPropriedadeGet(Id idArg, Propriedade propriedade) throws PropriedadeJaDeclaradaException {
+    		if (this.mapPropriedadeGet.put(idArg, propriedade) != null) {
     			throw new PropriedadeJaDeclaradaException(idArg);
     		}
     }
     
-    public void mapeiaPropriedadeSet(Id idArg, Expressao exp) throws PropriedadeJaDeclaradaException {
-    		if (this.mapPropriedadeSet.put(idArg, exp) != null) {
+    public void mapeiaPropriedadeSet(Id idArg, Propriedade propriedade) throws PropriedadeJaDeclaradaException {
+    		if (this.mapPropriedadeSet.put(idArg, propriedade) != null) {
     			throw new PropriedadeJaDeclaradaException(idArg);
     		}
     }
@@ -460,14 +461,14 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
      * @throws PropriedadeNaoDeclaradaException
      * 			quando nao foi declarada nenhuma propriedade cuja variavel tem esse nome
      */
-    public Expressao getPropriedadeGet(Id idArg) throws PropriedadeNaoDeclaradaException{
-    		Expressao result = null;
+    public Propriedade getPropriedadeGet(Id idArg) throws PropriedadeNaoDeclaradaException{
+    		Propriedade result = null;
     		result = this.mapPropriedadeGet.get(idArg);
     		return result;
     }
     
-    public Expressao getPropriedadeSet(Id idArg) throws PropriedadeNaoDeclaradaException {
-    		Expressao result = null;
+    public Propriedade getPropriedadeSet(Id idArg) throws PropriedadeNaoDeclaradaException {
+    		Propriedade result = null;
     		result = this.mapPropriedadeSet.get(idArg);
     		return result;
     }

@@ -2,8 +2,15 @@ package loo1.plp.orientadaObjetos1.comando;
 
 import loo1.plp.expressions2.memory.VariavelJaDeclaradaException;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.declaracao.variavel.Propriedade;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoJaDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ProcedimentoNaoDeclaradoException;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
+import loo1.plp.orientadaObjetos1.excecao.execucao.EntradaInvalidaException;
 import loo1.plp.orientadaObjetos1.expressao.Expressao;
 import loo1.plp.orientadaObjetos1.expressao.leftExpression.AcessoAtributo;
 import loo1.plp.orientadaObjetos1.expressao.leftExpression.Id;
@@ -26,6 +33,8 @@ public class Atribuicao implements Comando {
 	 * Express�o cujo valor ser� atribu�do ao lado esquerdo.
 	 */
     protected Expressao expressao;
+    
+    private Comando comando;
     
 	/**
 	 * Construtor.
@@ -59,10 +68,18 @@ public class Atribuicao implements Comando {
             Objeto obj = ambiente.getObjeto(referencia);
             obj.changeAtributo(idVariavel, expressao.avaliar(ambiente));
             
-            Expressao propriedade = ambiente.getMapPropriedadeSet().get(idVariavel);
+            Propriedade propriedade = ambiente.getMapPropriedadeSet().get(idVariavel);
             if(propriedade != null) {
             		ambiente.setIsGetProperties(false); //precisa setar false para n pegar a variavel do get quando tiver no set
-            		obj.changeAtributo(idVariavel, propriedade.avaliar(ambiente));
+            		try {
+						ambiente = propriedade.getChamadaMetodo().executar(ambiente);
+					} catch (ProcedimentoNaoDeclaradoException | ProcedimentoJaDeclaradoException
+							| ObjetoJaDeclaradoException | ClasseJaDeclaradaException | EntradaInvalidaException
+							| PropriedadeJaDeclaradaException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+            		obj.changeAtributo(idVariavel, propriedade.getExpressao().avaliar(ambiente));
         		}
         }
         else

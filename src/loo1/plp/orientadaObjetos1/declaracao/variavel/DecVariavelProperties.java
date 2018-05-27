@@ -52,8 +52,10 @@ public class DecVariavelProperties implements DecVariavel {
 		// TODO Auto-generated method stub
 		
 		ambiente.map(id , expressao.avaliar(ambiente));
-		ambiente.mapeiaPropriedadeGet(id, expget);
-		ambiente.mapeiaPropriedadeSet(id, expset);
+		Propriedade propGet = new Propriedade(expget, metodoGet);
+		ambiente.mapeiaPropriedadeGet(id, propGet);
+		Propriedade propSet = new Propriedade(expset, metodoSet);
+		ambiente.mapeiaPropriedadeSet(id, propSet);
 		
 		return ambiente;
 	}
