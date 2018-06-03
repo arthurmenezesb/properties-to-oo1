@@ -126,7 +126,10 @@ public class AcessoAtributoThis extends AcessoAtributo {
 	       if(propriedade != null) {
 	    	   	   ambiente.setIsGetProperties(false);
 	    	   	   try {
-					ambiente = propriedade.getChamadaMetodo().executar(ambiente);
+	    	   		   	if(ambiente.getIsExecuteGetPropertieMethod()) {
+	    	   		   		ambiente.setIsExecuteGetPropertieMethod(false);
+	    	   		   		ambiente = propriedade.getChamadaMetodo().executar(ambiente);
+	    	   		   	}
 					//ambiente.setIsGetProperties(true);
 				} catch (ProcedimentoNaoDeclaradoException | ProcedimentoJaDeclaradoException
 						| ObjetoJaDeclaradoException | ClasseJaDeclaradaException | EntradaInvalidaException

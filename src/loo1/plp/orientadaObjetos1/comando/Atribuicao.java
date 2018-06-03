@@ -66,20 +66,26 @@ public class Atribuicao implements Comando {
             Expressao expAV = ((AcessoAtributo)av).getExpressaoObjeto();
             ValorRef referencia = (ValorRef)expAV.avaliar(ambiente);
             Objeto obj = ambiente.getObjeto(referencia);
-            obj.changeAtributo(idVariavel, expressao.avaliar(ambiente));
+            
             
             Propriedade propriedade = ambiente.getMapPropriedadeSet().get(idVariavel);
             if(propriedade != null) {
             		ambiente.setIsGetProperties(false); //precisa setar false para n pegar a variavel do get quando tiver no set
             		try {
-						ambiente = propriedade.getChamadaMetodo().executar(ambiente);
+            				if(ambiente.getIsExecuteSetPropertieMethod()) {
+            					ambiente.setIsExecuteSetPropertieMethod(false);
+            					ambiente = propriedade.getChamadaMetodo().executar(ambiente);
+            				}
 					} catch (ProcedimentoNaoDeclaradoException | ProcedimentoJaDeclaradoException
 							| ObjetoJaDeclaradoException | ClasseJaDeclaradaException | EntradaInvalidaException
 							| PropriedadeJaDeclaradaException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+            		obj.changeAtributo(idVariavel, expressao.avaliar(ambiente));
             		obj.changeAtributo(idVariavel, propriedade.getExpressao().avaliar(ambiente));
+        		} else {
+        			obj.changeAtributo(idVariavel, expressao.avaliar(ambiente));
         		}
         }
         else

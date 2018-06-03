@@ -78,6 +78,20 @@ public class ChamadaProcedimento implements Comando {
         ambiente.restaura();
         return ambiente;
     }
+    
+    public AmbienteExecucaoOO1 executar(AmbienteExecucaoOO1 ambiente, boolean isExecuteMethod)
+            throws VariavelJaDeclaradaException, VariavelNaoDeclaradaException,
+                   ProcedimentoNaoDeclaradoException, ProcedimentoJaDeclaradoException,
+                   ObjetoNaoDeclaradoException, ObjetoJaDeclaradoException,
+                   ClasseNaoDeclaradaException, ClasseJaDeclaradaException, EntradaInvalidaException, PropriedadeJaDeclaradaException{
+    		    ambiente.setIsExecuteGetPropertieMethod(isExecuteMethod);
+            ambiente.incrementa();
+            ambiente = bindParameters(ambiente, procedimento.getParametrosFormais());
+            ambiente = procedimento.getComando().executar(ambiente);
+            ambiente.restaura();
+            ambiente.setIsExecuteGetPropertieMethod(true);
+            return ambiente;
+        }
 
     /**
      * insere no contexto o resultado da associacao entre cada parametro formal

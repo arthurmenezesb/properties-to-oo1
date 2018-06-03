@@ -74,11 +74,31 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
     private boolean IsGetProperties = true;
     
     public boolean getIsGetProperties() {
-    	return this.IsGetProperties;
+    		return this.IsGetProperties;
     }
     
     public void setIsGetProperties(boolean value) {
-    	this.IsGetProperties = value;
+    		this.IsGetProperties = value;
+    }
+    
+    private boolean isExecuteSetPropertieMethod = true;
+    
+    public boolean getIsExecuteSetPropertieMethod() {
+    		return isExecuteSetPropertieMethod;
+    }
+    
+    public void setIsExecuteSetPropertieMethod(boolean value) {
+    		this.isExecuteSetPropertieMethod = value;
+    }
+    
+    private boolean isExecuteGetPropertieMethod = true;
+    
+    public boolean getIsExecuteGetPropertieMethod() {
+    		return isExecuteGetPropertieMethod;
+    }
+    
+    public void setIsExecuteGetPropertieMethod(boolean value) {
+    		this.isExecuteGetPropertieMethod = value;
     }
 
     /**

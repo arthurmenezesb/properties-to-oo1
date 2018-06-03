@@ -76,7 +76,7 @@ public class ChamadaMetodo implements Comando {
                                                                //  um mapeamento
 
         ListaValor valoresDosParametros = parametrosReais.avaliar(ambiente);
-        new ChamadaProcedimento(metodo, parametrosReais, valoresDosParametros).executar(aux);
+        new ChamadaProcedimento(metodo, parametrosReais, valoresDosParametros).executar(aux, ambiente.getIsExecuteGetPropertieMethod());
         return ambiente;
     }
 

@@ -49,6 +49,14 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
     
     public void setIsGetProperties(boolean value);
     
+    public boolean getIsExecuteSetPropertieMethod();
+	
+	public void setIsExecuteSetPropertieMethod(boolean value);
+	
+	public boolean getIsExecuteGetPropertieMethod();
+	
+	public void setIsExecuteGetPropertieMethod(boolean value);
+    
     public void mapeiaPropriedadeGet(Id idArg, Propriedade propGet) throws PropriedadeJaDeclaradaException;
     
     public void mapeiaPropriedadeSet(Id idArg, Propriedade propSet) throws PropriedadeJaDeclaradaException;
