@@ -9,6 +9,8 @@ import java.util.Stack;
 import loo1.plp.expressions2.expression.Id;
 import loo1.plp.expressions2.memory.VariavelJaDeclaradaException;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
+import loo1.plp.orientadaObjetos1.declaracao.variavel.DecVariavel;
+import loo1.plp.orientadaObjetos1.declaracao.variavel.DecVariavelProperties;
 import loo1.plp.orientadaObjetos1.declaracao.variavel.Propriedade;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseJaDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
@@ -187,6 +189,24 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 	
 	public HashMap<Id, Propriedade> getMapPropriedadeSet(){
 		return this.mapPropriedadeSet;
+	}
+	
+	public Propriedade getPropriedade(Id idClasse, loo1.plp.orientadaObjetos1.expressao.leftExpression.Id idVariavel, boolean isSet) throws ClasseNaoDeclaradaException {
+		DefClasse classe = this.getDefClasse(idClasse);
+		Object decVariavel = classe.getDecVariavelById(idVariavel);
+		if(decVariavel instanceof DecVariavelProperties) {
+			DecVariavelProperties decVariavelProperties = (DecVariavelProperties)decVariavel;
+			Propriedade propriedade;
+			if(isSet) {
+				propriedade = new Propriedade(decVariavelProperties.getExpressaoSet(), decVariavelProperties.getMetodoSet());
+			} else {
+				propriedade = new Propriedade(decVariavelProperties.getExpressaoGet(), decVariavelProperties.getMetodoGet());
+			}
+			
+			return propriedade;
+		} else {
+			throw new VariavelNaoDeclaradaException(idVariavel);
+		}
 	}
 
     /**

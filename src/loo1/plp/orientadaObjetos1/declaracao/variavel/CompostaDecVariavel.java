@@ -102,4 +102,14 @@ public class CompostaDecVariavel implements DecVariavel {
 		return declaracao1.checaTipo(ambiente)
 				&& declaracao2.checaTipo(ambiente);
 	}
+	
+	public Object getVariavelById(Id idVariavel) {
+		Object variavel;
+		try {
+			variavel = declaracao1.getVariavelById(idVariavel);
+		} catch (VariavelNaoDeclaradaException e) {
+			variavel = declaracao2.getVariavelById(idVariavel);
+		}
+		return variavel;
+	}
 }

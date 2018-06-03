@@ -119,9 +119,10 @@ public class AcessoAtributoThis extends AcessoAtributo {
         // Recuperando o mapeamento de valores do objeto (atributos do objeto)
        ContextoObjeto aux = objeto.getEstado();
        
+       Id idClasse = objeto.getClasse();
        
        if(ambiente.getIsGetProperties()) {
-	       Propriedade propriedade = ambiente.getMapPropriedadeGet().get(super.getId());
+    	   	   Propriedade propriedade = ambiente.getPropriedade(idClasse, super.getId(), false);
 	       
 	       if(propriedade != null) {
 	    	   	   ambiente.setIsGetProperties(false);

@@ -96,5 +96,13 @@ public class SimplesDecVariavel implements DecVariavel{
         }
         return resposta;
     }
+    
+    public Object getVariavelById(Id idVariavel) {
+    		if(this.id.equals(idVariavel)) { 
+    			return this;
+    		} else {
+    			throw new VariavelNaoDeclaradaException(id);
+    		}
+    }
 
 }

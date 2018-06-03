@@ -50,4 +50,7 @@ public interface DecVariavel extends Declaracao {
     public boolean checaTipo(AmbienteCompilacaoOO1 ambiente)
         throws VariavelNaoDeclaradaException, VariavelJaDeclaradaException,
                ClasseJaDeclaradaException, ClasseNaoDeclaradaException;
+    
+    public Object getVariavelById(Id idVariavel);
+
 }

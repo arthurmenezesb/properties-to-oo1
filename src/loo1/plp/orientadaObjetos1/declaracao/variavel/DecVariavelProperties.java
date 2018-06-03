@@ -79,5 +79,29 @@ public class DecVariavelProperties implements DecVariavel {
         }
         return resposta;
 	}
+	
+	public Object getVariavelById(Id idVariavel) {
+		if(this.id.equals(idVariavel)) { 
+			return this;
+		} else {
+			throw new VariavelNaoDeclaradaException(id);
+		}
+	}
+	
+	public Expressao getExpressaoGet() {
+		return this.expget;
+	}
+	
+	public Expressao getExpressaoSet() {
+		return this.expget;
+	}
+	
+	public ChamadaMetodo getMetodoGet() {
+		return this.metodoGet;
+	}
+	
+	public ChamadaMetodo getMetodoSet() {
+		return this.metodoSet;
+	}
 
 }

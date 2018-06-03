@@ -6,6 +6,7 @@ import java.util.Stack;
 import loo1.plp.expressions2.expression.Id;
 import loo1.plp.expressions2.memory.VariavelNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.declaracao.variavel.Propriedade;
+import loo1.plp.orientadaObjetos1.excecao.declaracao.ClasseNaoDeclaradaException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoJaDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.ObjetoNaoDeclaradoException;
 import loo1.plp.orientadaObjetos1.excecao.declaracao.PropriedadeJaDeclaradaException;
@@ -62,6 +63,8 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
     public void mapeiaPropriedadeSet(Id idArg, Propriedade propSet) throws PropriedadeJaDeclaradaException;
     
     public HashMap<Id, Propriedade> getMapPropriedadeSet();
+    
+    public Propriedade getPropriedade(Id idClasse, loo1.plp.orientadaObjetos1.expressao.leftExpression.Id idVariavel, boolean isSet) throws ClasseNaoDeclaradaException;
 
     /**
      * Mapeia um valor refer�ncia a um objeto.

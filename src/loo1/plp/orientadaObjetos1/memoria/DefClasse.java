@@ -55,6 +55,11 @@ public class DefClasse {
 			throws ProcedimentoNaoDeclaradoException {
 		return decProcedimento.getProcedimento(idMetodo);
 	}
+	
+	public Object getDecVariavelById(Id idVariavel) {
+		return decVariavel.getVariavelById(idVariavel);
+	}
+	
 
 	/**
 	 * O m�todo abaixo deve verificar se existe algum atributo, identificado por

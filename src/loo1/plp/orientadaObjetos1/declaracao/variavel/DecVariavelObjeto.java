@@ -116,4 +116,12 @@ public class DecVariavelObjeto implements DecVariavel {
 	public Id getClasse() {
 		return classe;
 	}
+	
+	public Object getVariavelById(Id idVariavel) {
+		if(this.objeto.equals(idVariavel)) { 
+			return this;
+		} else {
+			throw new VariavelNaoDeclaradaException(objeto);
+		}
+	}
 }
