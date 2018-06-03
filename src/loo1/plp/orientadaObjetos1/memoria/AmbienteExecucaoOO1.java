@@ -27,12 +27,6 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
      * @return a pilha de valores associados a identificadores.
      */
 	public Stack<HashMap<Id, Valor>> getPilha();
-	
-	/**
-	 * Retorna a pilha com as definicoes das propriedades
-	 * @return
-	 */
-	public HashMap<Id, Propriedade> getMapPropriedadeGet();
 
     /**
      * Retorna a pilha com as defini�oes das classes.
@@ -57,12 +51,6 @@ public interface AmbienteExecucaoOO1 extends AmbienteOO1<Valor> {
 	public boolean getIsExecuteGetPropertieMethod();
 	
 	public void setIsExecuteGetPropertieMethod(boolean value);
-    
-    public void mapeiaPropriedadeGet(Id idArg, Propriedade propGet) throws PropriedadeJaDeclaradaException;
-    
-    public void mapeiaPropriedadeSet(Id idArg, Propriedade propSet) throws PropriedadeJaDeclaradaException;
-    
-    public HashMap<Id, Propriedade> getMapPropriedadeSet();
     
     public Propriedade getPropriedade(Id idClasse, loo1.plp.orientadaObjetos1.expressao.leftExpression.Id idVariavel, boolean isSet) throws ClasseNaoDeclaradaException;
 
