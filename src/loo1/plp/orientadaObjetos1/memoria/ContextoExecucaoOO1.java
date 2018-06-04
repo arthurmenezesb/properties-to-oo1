@@ -178,7 +178,7 @@ public class ContextoExecucaoOO1 implements AmbienteExecucaoOO1 {
 			
 			return propriedade;
 		} else {
-			throw new VariavelNaoDeclaradaException(idVariavel);
+			return null;
 		}
 	}
 
