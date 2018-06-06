@@ -1,0 +1,23 @@
+{
+    classe LValor {
+        int testproperties = 1 { get { this.printGet() ; this.testproperties + 2   } set { this.printSet() ; this.testproperties + 2 } };
+
+        proc printGet() {
+            write(this.testproperties)
+        },
+
+        proc printSet() {
+            write(this.testproperties)
+        },
+
+        proc inc() {
+            this.testproperties :=  this.testproperties + 10
+        }
+    };
+
+    {
+        LValor lv := new LValor;
+        lv.inc();
+        write(lv.testproperties)
+    }
+}
