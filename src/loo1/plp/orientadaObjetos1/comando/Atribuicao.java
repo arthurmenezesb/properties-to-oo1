@@ -85,10 +85,12 @@ public class Atribuicao implements Comando {
             		obj.changeAtributo(idVariavel, expressao.avaliar(ambiente));
             		obj.changeAtributo(idVariavel, propriedade.getExpressao().avaliar(ambiente));
         		} else {
+        			ambiente.setIsGetProperties(true);
         			obj.changeAtributo(idVariavel, expressao.avaliar(ambiente));
         		}
         }
         else
+        		
             ambiente.changeValor(idVariavel, expressao.avaliar(ambiente));
         return ambiente;
     }

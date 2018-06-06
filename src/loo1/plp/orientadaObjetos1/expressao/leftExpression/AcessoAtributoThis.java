@@ -141,7 +141,9 @@ public class AcessoAtributoThis extends AcessoAtributo {
 	    	   	   return propriedade.getExpressao().avaliar(ambiente);
 	       } else {
 		    	   //Recuperando o valor do atributo "id" do objeto
+	    	   		ambiente.setIsGetProperties(true);
 		    	   return aux.get(super.getId());
+		    	   
 	       }
        } else {
            // Recuperando o valor do atributo "id" do objeto
